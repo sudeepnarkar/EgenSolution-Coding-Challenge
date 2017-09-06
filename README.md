@@ -10,7 +10,8 @@ Dependencies -
 1. Java - https://www.java.com/en/download/
 2. Maven - https://maven.apache.org/
 3. MongoDb - https://www.mongodb.com/download-center
-4. Emulator code - https://github.com/egen/sensor-emulator
+4. Easy Rules - http://www.easyrules.org/
+5. Emulator code - https://github.com/egen/sensor-emulator
 
 
 Follow the below steps to run the project
