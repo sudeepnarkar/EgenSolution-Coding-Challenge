@@ -31,7 +31,7 @@ AlertRepository alertRepository;
 		
 		boolean res  = false;
 		int checkWeight = (int) ((0.10*baseWeight) + baseWeight); 
-		System.out.println("checkWeight :"+checkWeight);
+		//System.out.println("checkWeight :"+checkWeight);
 		if(weight>checkWeight)
 			res = true;
 		
@@ -41,7 +41,7 @@ AlertRepository alertRepository;
 	@Action
 	public void fireAlert() {
 		
-		System.out.println(" OverWeight - Base Weight is "+baseWeight +"Weight is "+weight);
+		System.out.println(" OverWeight - Base Weight is "+baseWeight +" Weight is "+weight);
 		String alertMsg = "OverWeight alert msg fired for weight "+weight;
 		Alerts alert = new Alerts(weight,alertMsg,timeStamp);
 		alertRepository.save(alert);

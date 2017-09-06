@@ -10,6 +10,7 @@ import org.mongodb.morphia.Datastore;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import com.SpringBoot.EgenLevel2.Repository.AlertRepository;
 import com.SpringBoot.EgenLevel2.Repository.MetricRepository;
 import com.SpringBoot.EgenLevel2.Rules.OverWeight;
 import com.SpringBoot.EgenLevel2.Rules.UnderWeight;
+import com.google.common.net.MediaType;
 
 
 @RestController
@@ -35,22 +37,21 @@ public class MetricController {
 	}
 	
 	
-	@RequestMapping("/read")
+	@RequestMapping(value ="/read",
+			method = RequestMethod.GET)
 	public List<Metrics> readAll(){
 		List<Metrics> metrics = metricRepository.findAll();
 		return metrics;
 	}
 	
-	@RequestMapping("/create")
+	@RequestMapping(value ="/create",
+			method = RequestMethod.POST)
 	public void create(@RequestBody Metrics metric) {
 		
 		if(reqCount==0) {
 			baseWeight = metric.getValue();
 			System.out.println("baseWeight: "+baseWeight);
 			
-			for(int i = 1;i<=15;i++) {
-				System.out.println("==========================");
-			}
 		}
 		
 		reqCount++;
@@ -65,7 +66,8 @@ public class MetricController {
 	}
 	
 
-	@RequestMapping("/readByTimeRange")
+	@RequestMapping(value ="/readByTimeRange",
+			method = RequestMethod.GET)
 	public List<Metrics> readByTimeRange (@RequestParam long start, @RequestParam long end){
 		
 		List<Metrics> allMetrics = readAll();
@@ -79,7 +81,8 @@ public class MetricController {
 		return resultMetricsList;		
 	}
 	
-	@RequestMapping("/checkEasyRules")
+	@RequestMapping(value ="/checkWeight",
+			method = RequestMethod.GET)
 	public void checkWeight(int baseWeight, int weight, long timeStamp) {
 	
 		UnderWeight underWeight = new UnderWeight(baseWeight,weight,timeStamp,alertRepository);

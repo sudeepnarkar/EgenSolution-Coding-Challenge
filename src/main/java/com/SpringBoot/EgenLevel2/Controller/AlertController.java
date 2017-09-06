@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,13 +26,15 @@ public class AlertController {
 	}
 	
 	
-	@RequestMapping("/read")
+	@RequestMapping(value ="/read",
+			method = RequestMethod.POST)
 	public List<Alerts> readAll(){
 		List<Alerts> alerts = alertRepository.findAll();
 		return alerts;
 	}
 	
-	@RequestMapping("/readByTimeRange")
+	@RequestMapping(value ="/readByTimeRange",
+			method = RequestMethod.POST)
 	public List<Alerts> readByTimeRange (@RequestParam long start, @RequestParam long end){
 		
 		List<Alerts> allAlerts = readAll();
