@@ -1,5 +1,4 @@
-# EgenSolution-Coding-Challenge
-Egen Solutions Coding Challenge
+# Personal Weight Tracker
 
 The goal of this project is to build a system that works like an IoT platform – in this case, a personal weight tracker. This system is responsible for
 
